@@ -7,4 +7,4 @@ MANIFEST="${BASE_URL}components-2.json"
 
 manifest=$(curl -s $MANIFEST)
 
-curl -s $MANIFEST | jq '[.components[] | select(.id | test("gke-gcloud-auth-plugin-")) | {"key": (.id|tostring), "value": { "url": .data.source, "sha256": .data.checksum, "version": .version } }] | from_entries' < ~/components.json > sources.json
+curl -s $MANIFEST | jq '[.components[] | select(.id | test("gke-gcloud-auth-plugin-")) | {"key": (.id|tostring), "value": { "url": .data.source, "sha256": .data.checksum, "version": .version } }] | from_entries' > sources.json
